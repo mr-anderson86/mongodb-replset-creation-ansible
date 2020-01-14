@@ -14,7 +14,7 @@ This Ansible playbook is used for setting up a new replica set in MongoDB.
 ### Notes:
 * The mongod service will run on the same port on all servers.
 * The same DB path and log dir will be used on all servers.
-* The above are configured via (env.yaml)[env.yaml] file (see usage below)
+* The above are configured via [env.yaml](env.yaml) file (see usage below)
 
 ### Prerequisites
 1. It runs only on CentOS machines (probably will work also on RedHat)
