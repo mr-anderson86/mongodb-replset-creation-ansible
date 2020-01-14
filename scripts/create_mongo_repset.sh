@@ -67,7 +67,8 @@ if (is_user == null) {
 db.createUser(adm_user);
 db.grantRolesToUser(adm_username, [ {role: 'root', db: 'admin'} ] );
 } else {
-print('Admin user already exists');
+print('Admin user already exists')
+};
 "
 check_status $? "Admin user creation"
 echo;echo
