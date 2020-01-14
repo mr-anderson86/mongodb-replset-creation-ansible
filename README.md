@@ -7,7 +7,7 @@ This Ansible playbook is used for setting up a new replica set in MongoDB.
 
 ### Main actions:
 * Installes MongoDB server and shell (org) on all servers
-* Create the replica set between all members (servers)
+* Creates the replica set between all members (servers)
 * Creates admin user (under db 'admin')
 * Create regular user (under db "$DB_NAME")
 
