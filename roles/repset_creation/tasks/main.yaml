@@ -21,4 +21,6 @@
   args:
     executable: /bin/bash
   register: replset_creation
+
+- name: Replica set creation output
   debug: var=replset_creation.stdout_lines  
