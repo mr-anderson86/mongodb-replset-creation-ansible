@@ -37,7 +37,7 @@ CONFIG="`echo ${CONFIG} | sed 's/.$/]/'` }"
 
 ADM_USER="{ user: \"${ADMIN_USER}\",
             pwd: \"${ADMIN_PASS}\",
-            roles: [{role: \"userAdminAnyDatabase\", db: \"admin\" }, \"readWriteAnyDataBase\" ]
+            roles: [{role: \"userAdminAnyDatabase\", db: \"admin\" }]
           }"
 
 REGULAR_USER="{ user: \"${DB_USER}\",
@@ -73,13 +73,13 @@ print('Admin user already exists')
 check_status $? "Admin user creation"
 echo;echo
 
-mongo "mongodb://${members}/${DB_NAME}?replicaSet=${REPSET_NAME}" --eval "var db_name = 'print(db);
+mongo "mongodb://${members}/${DB_NAME}?replicaSet=${REPSET_NAME}" --eval "var db_name = print(db);
 var regular_user = $REGULAR_USER;
 var regular_username = '$DB_USER';
-printjson(reular_user);
+printjson(regular_user);
 is_user = db.getUser(regular_username);
 if (is_user == null) {
-db.createUser(reular_user);
+db.createUser(regular_user);
 } else {
 print('Regular user already exists');
 }"
