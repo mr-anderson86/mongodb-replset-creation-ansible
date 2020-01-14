@@ -1,0 +1,10 @@
+[all_servers]
+some-vm01
+some-vm02
+[all_servers:vars]
+ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+
+[main_server]
+some-vm01
+[main_server:vars]
+ansible_ssh_extra_args='-o StrictHostKeyChecking=no'

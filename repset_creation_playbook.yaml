@@ -1,0 +1,12 @@
+---
+- hosts: all_servers
+  roles:
+    - first_installation
+
+- hosts: main_server
+  roles:
+    - repset_creation
+
+- hosts: all_servers
+  roles:
+    - last_configuration

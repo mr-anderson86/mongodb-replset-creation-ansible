@@ -1,0 +1,25 @@
+---
+- name: Configure the /etc/mongod.conf file
+  replace:
+    path: "/etc/mongod.conf"
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.value }}"
+  with_items:
+    - { regexp: '#security', value: "security" }
+    - { regexp: '#authorization', value: "authorization" }
+    - { regexp: '#keyFile', value: "keyFile" }
+
+- name: Restart mongod service
+  service:
+    name: mongod
+    state: restarted
+
+- debug:
+  msg:
+  - "MongoDB replica set is ready to use."
+  - ""
+  - "To connect to admin from shell, run the command below:"
+  - "mongo 'mongodb://{{ MEMBERS }} | replace(' ',',') }}/admin?replicaSet={{ REPSET_NAME }}' --username {{ ADMIN_USER }} --password {{ ADMIN_PASS }}"
+  - ""
+  - "To connect to regular user from shell, run the command below:"
+  - "mongo 'mongodb://{{ MEMBERS }} | replace(' ',',') }}/{{ DB_NAME }}?replicaSet={{ REPSET_NAME }}' --username {{ DB_USER }} --password {{ DB_PASS }}"

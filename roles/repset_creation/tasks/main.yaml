@@ -1,0 +1,26 @@
+---
+- name: Copy script to server
+  copy:
+    src: "{{ playbook_dir }}/scripts/create_mongo_repset.sh"
+    dest: "/tmp/"
+    mode: '0755'
+
+- name: Replica set creation
+  environment:
+    DB_PATH: "{{ DB_PATH }}"
+    BIND_IP: "{{ BIND_IP }}"
+    DB_PORT: "{{ DB_PORT }}"
+    REPSET_NAME: "{{ REPSET_NAME }}"
+    MEMBERS: "{{ MEMBERS }}"
+    ADMIN_USER: "{{ ADMIN_USER }}"
+    ADMIN_PASS: "{{ ADMIN_PASS }}"
+    DB_USER: "{{ DB_USER }}"
+    DB_PASS: "{{ DB_PASS }}"
+    DB_NAME: "{{ DB_NAME }}"
+  shell: "/tmp/create_mongo_repset.sh"
+  args:
+    executable: /bin/bash
+  register: replset_creation
+
+- name: Replica set creation output
+  debug: var=replset_creation.stdout_lines
