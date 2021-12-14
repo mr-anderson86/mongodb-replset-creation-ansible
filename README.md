@@ -1,4 +1,4 @@
-# mongodb-replset-creation
+# MongoDB Replica Set Creation
 
 ## Description
 
@@ -36,8 +36,8 @@ So if needed, generate ssh keys and put the public keys unser ~/.ssh/authorized_
 ### Usage
 After that, usage is pretty simple (Run it on your Ansible machine):
 ```bash
-git clone https://github.com/mr-anderson86/mongodb-replset-creation.git
-cd mongodb-replset-creation
+git clone https://github.com/mr-anderson86/mongodb-replset-creation-ansible.git
+cd mongodb-replset-creation-ansible
 vi env.yaml
 # Edit all your details such as:
 # * Port for MongoDB (defailt is 27017)
